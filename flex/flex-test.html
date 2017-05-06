@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test flex</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		html,body  {
+			height: 100%;
+		}
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			align-content: center;
+			background: -webkit-linear-gradient(top, #222, #333);
+		}
+		.box {
+			display: flex;
+			width: 104px;
+			height: 104px;
+			margin: 20px;
+			padding: 4px;
+			box-shadow: 
+				inset 0 5px white,
+				inset 0 -5px #bbb,
+				inset 5px 0 #d7d7d7,
+				inset -5px 0 #d7d7d7;
+			border-radius: 10%;
+			background-color: #e7e7e7;
+		}
+		.column {
+			display: flex;
+			justify-content: space-between;
+		}
+		.pip {
+			width: 24px;
+			height: 24px;
+			margin: 4px;
+			border-radius: 50%;
+			background-color: #333;
+			box-shadow: 
+				inset 0 3px #111,
+				inset 0 -3px #555;
+		}
+
+		.box:nth-child(1) {
+			justify-content: center;
+			align-items: center;
+		}
+
+		.box:nth-child(2) {
+			justify-content: space-between;
+		}
+		.box:nth-child(2)>.pip:nth-child(2) {
+			align-self: flex-end;
+		}
+		
+		.box:nth-child(3) {
+			justify-content: space-between;
+		}
+		.box:nth-child(3)>.pip:nth-child(2) {
+			align-self: center;
+		}
+		.box:nth-child(3)>.pip:nth-child(3) {
+			align-self: flex-end;
+		}
+
+		.box:nth-child(4) {
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.box:nth-child(5) {
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		.box:nth-child(5)>.column:nth-child(2) {
+			justify-content: center;
+		}
+		
+		.box:nth-child(6) {
+			justify-content: space-between;
+		}
+		.box:nth-child(6)>.column {
+			flex-direction: column;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="pip"></div>
+	</div>
+	<div class="box">
+		<div class="pip"></div>
+		<div class="pip"></div>
+	</div>
+	<div class="box">
+		<div class="pip"></div>
+		<div class="pip"></div>
+		<div class="pip"></div>
+	</div>
+	<div class="box">
+		<div class="column">
+			<div class="pip"></div>
+			<div class="pip"></div>
+		</div>
+		<div class="column">
+			<div class="pip"></div>
+			<div class="pip"></div>
+		</div>
+	</div>
+	<div class="box">
+		<div class="column">
+			<div class="pip"></div>
+			<div class="pip"></div>
+		</div>
+		<div class="column">
+			<div class="pip"></div>
+		</div>
+		<div class="column">
+			<div class="pip"></div>
+			<div class="pip"></div>
+		</div>
+	</div>
+	<div class="box">
+		<div class="column">
+			<div class="pip"></div>
+			<div class="pip"></div>
+			<div class="pip"></div>
+		</div>
+		<div class="column">
+			<div class="pip"></div>
+			<div class="pip"></div>
+			<div class="pip"></div>
+		</div>
+	</div>
+</body>
+</html>

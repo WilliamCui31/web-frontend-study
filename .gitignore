@@ -1,0 +1,10 @@
+[user]
+	name=WilliamCui31
+	email=444738577@qq.com
+[push]
+	default=matching
+[core]
+	excludesfile=/c/Users/Administrator/.gitignore_global
+
+***** dist directory *****
+/dist/**/*
