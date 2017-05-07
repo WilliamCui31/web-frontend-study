@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>3D dice</title>
+	<title>3D Frame</title>
 	<style>
 		*, *:before, *:after {
 			box-sizing: border-box;
 		}
+		html, body {
+			height: 100%;
+		}
 		body {
-		  background: #444;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  background: #333;
 	      perspective: 1300px;
-	      padding-left: 40%;
-	      overflow: hidden;
 		}
 		.preface {
 	      position: absolute;
@@ -65,7 +69,6 @@
 	    }
 		
 		section {
-	     padding-top: 35%;
 	     transform-origin: 150px 150px 150px;
 	     animation: spinning 10s linear infinite;
 	     transform-style: preserve-3d;
