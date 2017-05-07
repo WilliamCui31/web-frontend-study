@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3D dice</title>
+	<style>
+		*, *:before, *:after {
+			box-sizing: border-box;
+		}
+		body {
+		  background: #444;
+	      perspective: 1300px;
+	      padding-left: 40%;
+		}
+		.preface {
+	      position: absolute;
+	      transform: rotateX(45deg) translateZ(0);
+	      transform-style: preserve-3d;
+	    }
+		.face {
+			width: 300px;
+			height: 300px;
+			background-position: center;
+			background-size: cover;
+			opacity: .9;
+		}
+
+		#top .face {
+	      transform-origin: top;
+	      transform: translateY(300px);
+	      transform: rotateX(90deg);
+	      background-image: url(wedding/wedding_01.JPG);
+	    }
+
+	    #front .face {  
+	      transform: translateZ(300px);
+	      background-image: url(wedding/wedding_02.JPG);
+	    }
+
+	    #bottom .face {
+	      transform-origin: bottom;
+	      transform: translateY(-300px);
+	      transform: rotateX(-90deg);
+	      background-image: url(wedding/wedding_03.JPG);
+	    }
+
+	    #back .face {
+	      background-image: url(wedding/wedding_04.JPG);
+	    }
+
+
+        #left .face {
+	      transform-origin: left;
+	      transform: translateX(-300px);
+	      transform: rotateY(-90deg);
+	      background-image: url(wedding/wedding_05.JPG);
+	    }
+
+	    #right .face {
+	      transform-origin: right;
+	      transform: translateX(300px);
+	      transform: rotateY(90deg);
+	      background-image: url(wedding/wedding_06.JPG);
+	    }
+		
+		section {
+	     padding-top: 35%;
+	     transform-origin: 150px 150px 150px;
+	     animation: spinning 10s linear infinite;
+	     transform-style: preserve-3d;
+	     transform: translateZ(0);
+	    }
+
+	    @keyframes spinning {
+	      0% { transform: rotateY(360deg) }
+	      50%{ transform: rotateY(0deg) }
+	      100%{ transform: rotateY(-360deg) }
+	    }
+
+	</style>
+</head>
+<body>
+	<section class="container">
+		<div id="top" class="preface">
+			<div class="face"></div>
+		</div>
+		<div id="front" class="preface">
+			<div class="face"></div>
+		</div>
+		<div id="bottom" class="preface">
+			<div class="face"></div>
+		</div>
+		<div id="back" class="preface">
+			<div class="face"></div>
+		</div>
+		<div id="left" class="preface">
+			<div class="face"></div>
+		</div>
+		<div id="right" class="preface">
+			<div class="face"></div>
+		</div>
+	</section>
+</body>
+</html>
