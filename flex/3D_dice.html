@@ -1,190 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>3D</title>
-  <style>
-    *, *:before, *:after {
-      box-sizing: border-box;
-    }
+	<meta charset="UTF-8">
+	<title>test flex</title>
+	<style>
+		*, *:before, *:after{
+			box-sizing: border-box;
+		}
+		body {
+			background: #444;
+			perspective: 1200px;
+			padding-left: 50%;
+		}
+		.face {
+			position: absolute;
+			transform: rotateX(45deg) rotateY(45deg);
+			transform-style: preserve-3d;
+		}
+		.box {
+			display: flex;
+			width: 200px;
+			height: 200px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			background-color: #e7e7e7;
+			opacity: .9;
+		}
+		.column {
+			display: flex;
+			justify-content: space-between;
+		}
+		.pip {
+			display: block;
+			width: 40px;
+			height: 40px;
+			margin: 5px;
+			border-radius: 50%;
+			background-color: #333;
+			box-shadow: 
+				inset 0 3px #111,
+				inset 0 -3px #555;
+		}
 
-    body {
-      background: #444;
-      perspective: 1200px;
-      padding-left: 50%;
-     }
+		.face:nth-child(1) .box {
+			transform-origin: top;
+			transform: rotateX(90deg);
+			justify-content: center;
+			align-items: center;
+		}
 
-    .preface {
-      position: absolute;
-      transform: rotateX(45deg);
-      transform-style: preserve-3d;
-    }
+		.face:nth-child(2) .box {
+			transform-origin: bottom; 
+			transform: rotateX(-90deg);
+			justify-content: space-between;
+		}
+		.face:nth-child(2)>.box>.pip:nth-child(2) {
+			align-self: flex-end;
+		}
+		
+		.face:nth-child(3)>.box {
+			transform: translateZ(200px);
+			justify-content: space-between;
+		}
+		.face:nth-child(3)>.box>.pip:nth-child(2) {
+			align-self: center;
+		}
+		.face:nth-child(3)>.box>.pip:nth-child(3) {
+			align-self: flex-end;
+		}
 
-    .preface .face {
-      padding: 30px;
-      height: 200px;
-      width: 200px;
-      transform-style:initial;
-      border: 1px #333 solid;
-      background: rgba(255,255,255,0.9);
-      object-fit: contain;
-    }
+		.face:nth-child(4)>.box {
+			flex-direction: column;
+			justify-content: space-between;
+		}
 
-    .pip {
-      display: block;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background-color: #333;
-      box-shadow: inset 0 3px #111, inset 0 -3px #555;
-    }
+		.face:nth-child(5)>.box {
+			transform-origin: left; 
+			transform: rotateY(-90deg);
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		.face:nth-child(5)>.box>.column:nth-child(2) {
+			justify-content: center;
+		}
+		
+		.face:nth-child(6)>.box {
+			transform-origin: right; 
+			transform: rotateY(90deg);
+			justify-content: space-between;
+		}
+		.face:nth-child(6)>.box>.column {
+			flex-direction: column;
+		}
 
-    #top .face {
-      transform-origin: top;
-      transform: translateY(-200px);
-      transform: rotateX(90deg);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+		section {
+	     padding-top: 40%;
+	     transform-origin: 0%;
+	     animation: spinning 5s linear infinite;
+	     transform-style: preserve-3d;
+	    }
+	    @keyframes spinning {
+	      from { transform: rotateY(0deg) }
+	      to { transform: rotateY(360deg) }
+	    }
 
-    #front .face {  
-      transform: translateZ(200px);
-      display: flex;
-      justify-content: space-between;
-    }
-    #front .face .pip:nth-of-type(2) {
-      align-self: flex-end;
-    }
-
-    #bottom .face {
-      transform-origin: bottom;
-      transform: translateY(200px);
-      transform: rotateX(-90deg);
-      display: flex;
-      justify-content: space-between;
-    }
-    #bottom .face .pip:nth-of-type(2) {
-      align-self: center;
-    }
-    #bottom .face .pip:nth-of-type(3) {
-      align-self: flex-end;
-    }
-
-    #back .face {
-      display: flex;
-      justify-content: space-between;
-      
-    }
-    #back .face .column {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }  
-
-    #left .face {
-      transform-origin: left;
-      transform: translateX(-200px);
-      transform: rotateY(-90deg);
-      display: flex;
-      justify-content: space-between;
-    }
-    #left .face .column {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    #left .face .column:nth-of-type(2) {
-      justify-content: center;
-    }
-
-    #right .face {
-      transform-origin: right;
-      transform: translateX(200px);
-      transform: rotateY(90deg);
-      display: flex;
-      justify-content: space-between;
-    }
-    #right .face .column {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    section {
-     padding-top: 40%;
-     transform-origin: 0% 0%;
-     animation: spinning 5s ease-in-out 0s infinite alternate;
-     transform-style:preserve-3d;
-    }
-
-    @keyframes spinning {
-      from { transform: rotateY(0deg) }
-      to { transform: rotateY(360deg) }
-    }
-  </style>
+	</style>
 </head>
 <body>
-  <section class="container">
-    <div id="top" class="preface">
-      <div class="face">
-          <span class="pip"></span>
-      </div>
-    </div>
-    <div id="front" class="preface">
-      <div class="face">
-          <span class="pip"></span>
-          <span class="pip"></span>
-      </div>
-    </div>
-    <div id="bottom" class="preface">
-      <div class="face">
-          <span class="pip"></span>
-          <span class="pip"></span>
-          <span class="pip"></span>
-      </div>
-    </div>
-    <div id="back" class="preface">
-      <div class="face">
-        <div class="column">
-            <span class="pip"></span>
-            <span class="pip"></span>
-          </div>
-          <div class="column">
-            <span class="pip"></span>
-            <span class="pip"></span>
-          </div>
-      </div>
-    </div>
-    <div id="left" class="preface">
-      <div class="face">
-        <div class="column">
-          <span class="pip"></span>
-          <span class="pip"></span>
-        </div>
-        <div class="column">
-          <span class="pip"></span>
-        </div>
-        <div class="column">
-          <span class="pip"></span>
-          <span class="pip"></span>
-        </div>
-      </div>
-    </div>
-    <div id="right" class="preface">
-      <div class="face">
-        <div class="column">
-          <span class="pip"></span>
-          <span class="pip"></span>
-          <span class="pip"></span>
-        </div>
-        <div class="column">
-          <span class="pip"></span>
-          <span class="pip"></span>
-          <span class="pip"></span>
-        </div>
-      </div>
-    </div>
-  </section>
+	<section class="section">
+		<div class="face">
+			<div class="box">
+				<div class="pip"></div>
+			</div>
+		</div>
+		<div class="face">
+			<div class="box">
+				<div class="pip"></div>
+				<div class="pip"></div>
+			</div>
+		</div>
+		<div class="face">
+			<div class="box">
+				<div class="pip"></div>
+				<div class="pip"></div>
+				<div class="pip"></div>
+			</div>
+		</div>
+		<div class="face">
+			<div class="box">
+				<div class="column">
+					<div class="pip"></div>
+					<div class="pip"></div>
+				</div>
+				<div class="column">
+					<div class="pip"></div>
+					<div class="pip"></div>
+				</div>
+			</div>
+		</div>
+		<div class="face">
+			<div class="box">
+				<div class="column">
+					<div class="pip"></div>
+					<div class="pip"></div>
+				</div>
+				<div class="column">
+					<div class="pip"></div>
+				</div>
+				<div class="column">
+					<div class="pip"></div>
+					<div class="pip"></div>
+				</div>
+			</div>
+		</div>
+		<div class="face">
+			<div class="box">
+				<div class="column">
+					<div class="pip"></div>
+					<div class="pip"></div>
+					<div class="pip"></div>
+				</div>
+				<div class="column">
+					<div class="pip"></div>
+					<div class="pip"></div>
+					<div class="pip"></div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3d transform</title>
+	<style>
+		body {
+			display: flex;
+			height: 100vh;
+			justify-content: center;
+			align-items: center;
+			background-color: #444;
+			perspective: 1200px;
+		}
+		.cover {
+			transform: rotateX(45deg) rotateY(45deg) ;
+			transform-style: preserve-3d;
+		}
+		.face {
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 300px;
+			height: 300px;
+			border: 1px solid #333;
+			font-size: 100px;
+			background-color: rgba(255, 255, 255, .9);
+		}
+		
+		#top {
+			transform-origin: top;
+			transform: rotateX(90deg);
+		}
+		#bottom {
+			transform-origin: bottom;
+			transform: rotateX(-90deg);
+		}
+		#south {
+			transform: translateZ(300px);
+		}
+		#west {
+			transform-origin: left;
+			transform: rotateY(-90deg);
+		}
+		#east {
+			transform-origin: right;
+			transform: rotateY(90deg);
+		}
+		
+		#box {
+			transform-origin: left;
+			transform-style: preserve-3d;
+			transform: translateZ(0);
+			animation: spinning 5s linear infinite;
+		}
+		
+		@keyframes spinning {
+	      from { transform: rotateY(0deg) }
+	      to { transform: rotateY(360deg) }
+	    }
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="cover"><div id="top" class="face">上</div></div>
+		<div class="cover"><div id="bottom" class="face">下</div></div>
+		<div class="cover"><div id="south" class="face">南</div></div>
+		<div class="cover"><div id="north" class="face">北</div></div>
+		<div class="cover"><div id="west" class="face">西</div></div>
+		<div class="cover"><div id="east" class="face">东</div></div>
+	</div>
+</body>
+</html>
