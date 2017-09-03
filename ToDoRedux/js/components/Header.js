@@ -7,7 +7,6 @@ import { addTodo } from '../actions';
 class Header extends Component {
 
 	render() {
-		
 		const { addTodo } = this.props;
 
 		return <header id='header'>
